@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _04._05._2024
 {
-    internal class MainRules
+    public class MainRules
     {
         /// <summary>
         /// Правильно расставляет пробелы со знаками препинания
@@ -84,9 +84,10 @@ namespace _04._05._2024
         /// <returns></returns>
         public static string CorrectEllipsis(string text)
         {
-            Regex ellipsisRegex = new Regex(@"\s*\.\.\.\s*");
+            Regex ellipsisRegex = new Regex(@"\.\.\.\s*");
 
             text = ellipsisRegex.Replace(text, "…");
+
 
             return text;
         }

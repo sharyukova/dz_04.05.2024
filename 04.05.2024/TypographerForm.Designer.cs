@@ -56,6 +56,9 @@
             this.шрифтТекстаДвухОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шрифтТекстаПервогоОкнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шрифтТекстаВторогоОкнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.первоеОкноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.второеОкноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,8 +92,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.outputField);
             this.splitContainer1.Panel2.Controls.Add(this.panelAddRls);
+            this.splitContainer1.Panel2.Controls.Add(this.outputField);
             this.splitContainer1.Size = new System.Drawing.Size(963, 574);
             this.splitContainer1.SplitterDistance = 476;
             this.splitContainer1.TabIndex = 1;
@@ -263,11 +266,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label6.Location = new System.Drawing.Point(90, 46);
+            this.label6.Location = new System.Drawing.Point(136, 61);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(310, 35);
+            this.label6.Size = new System.Drawing.Size(213, 35);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Авторские правила";
+            this.label6.Text = "Мои правила";
             // 
             // checkBox7
             // 
@@ -311,6 +314,7 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.правилаToolStripMenuItem,
             this.настройкиToolStripMenuItem,
+            this.копироватьToolStripMenuItem,
             this.справкаToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
@@ -372,6 +376,29 @@
             this.шрифтТекстаВторогоОкнаToolStripMenuItem.Text = "Шрифт текста второго окна";
             this.шрифтТекстаВторогоОкнаToolStripMenuItem.Click += new System.EventHandler(this.шрифтТекстаВторогоОкнаToolStripMenuItem_Click);
             // 
+            // копироватьToolStripMenuItem
+            // 
+            this.копироватьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.первоеОкноToolStripMenuItem,
+            this.второеОкноToolStripMenuItem});
+            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
+            this.копироватьToolStripMenuItem.Text = "Копировать";
+            // 
+            // первоеОкноToolStripMenuItem
+            // 
+            this.первоеОкноToolStripMenuItem.Name = "первоеОкноToolStripMenuItem";
+            this.первоеОкноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.первоеОкноToolStripMenuItem.Text = "Первое окно";
+            this.первоеОкноToolStripMenuItem.Click += new System.EventHandler(this.первоеОкноToolStripMenuItem_Click);
+            // 
+            // второеОкноToolStripMenuItem
+            // 
+            this.второеОкноToolStripMenuItem.Name = "второеОкноToolStripMenuItem";
+            this.второеОкноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.второеОкноToolStripMenuItem.Text = "Второе окно";
+            this.второеОкноToolStripMenuItem.Click += new System.EventHandler(this.второеОкноToolStripMenuItem_Click);
+            // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
@@ -392,7 +419,6 @@
             this.MainMenuStrip = this.menu;
             this.Name = "TypographerForm";
             this.Text = "Типограф";
-            this.Load += new System.EventHandler(this.TypographerForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -439,5 +465,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button OKbttn;
         private System.Windows.Forms.RichTextBox infoAddField;
+        private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem первоеОкноToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem второеОкноToolStripMenuItem;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _04._05._2024
 {
@@ -74,6 +75,7 @@ namespace _04._05._2024
             panelMainRls.Visible = false;
             inputField.Visible = true;
             inputField.ReadOnly = false;
+            outputField.Text = UseMainRules(inputField.Text, checkBox1.Checked, checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked, checkBox6.Checked, checkBox7.Checked);
         }
 
         private void checkBox1_MouseEnter(object sender, EventArgs e)
@@ -177,23 +179,65 @@ namespace _04._05._2024
         {
             panelAddRls.Visible = false;
             outputField.Visible = true;
-        }
-        //
-        
-        
-
-        private void TypographerForm_Load(object sender, EventArgs e)
-        {
-
+            outputField.Text = UseMainRules(inputField.Text, checkBox1.Checked, checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked, checkBox6.Checked, checkBox7.Checked);
         }
 
-        
         private void inputField_TextChanged(object sender, EventArgs e)
         {
-            string str = MainRules.CorrectPunctuationSpaces(inputField.Text);
-            outputField.Text = MyRules.ReplaceE(str);
+            //string str = MainRules.CorrectPunctuationSpaces(inputField.Text);
+            outputField.Text = UseMainRules(inputField.Text, checkBox1.Checked, checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked, checkBox6.Checked, checkBox7.Checked);
         }
+
+        private void первоеОкноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(inputField.Text);
+        }
+
+        private void второеОкноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(outputField.Text);
+        }
+
+        public string UseMainRules(string text, bool rule1, bool rule2, bool rule3, bool rule4, bool rule5, bool myrul1, bool myrul2)
+        {
+            if (rule1)
+            {
+                text = MainRules.CorrectPunctuationSpaces(text);
+            }
+
+            if (rule2)
+            {
+                text = MainRules.CorrectSpaces(text);
+            }
+
+            if (rule3)
+            {
+                text = MainRules.CorrectQuotes(text);
+            }
+
+            if (rule4)
+            {
+                text = MainRules.CorrectDashSpaces(text);
+            }
+
+            if (rule5)
+            {
+                text = MainRules.CorrectEllipsis(text);
+            }
+
+            if (myrul1)
+            {
+                text = MyRules.ReplaceE(text);
+            }
+
+            if (myrul2)
+            {
+                text = MyRules.Censor(text);
+            }
+
+            return text;
+        }
+
+        
     }
-
-
 }
