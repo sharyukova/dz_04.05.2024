@@ -19,14 +19,15 @@ namespace _04._05._2024
 
         private void основныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainRlsForm mainRlsForm = new MainRlsForm();
-            mainRlsForm.Show();
+            inputField.Visible = false;
+            inputField.ReadOnly = true;
+            panelMainRls.Visible = true;
         }
 
         private void дополнительныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdditionalRlsForm additional = new AdditionalRlsForm();
-            additional.Show();
+            outputField.Visible = false;
+            panelAddRls.Visible = true;
         }
 
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,11 +64,136 @@ namespace _04._05._2024
             {
                 outputField.Font = fontDialog.Font;
             }
+        }      
+
+       
+
+        //
+        private void OKbtn_Click(object sender, EventArgs e)
+        {
+            panelMainRls.Visible = false;
+            inputField.Visible = true;
+            inputField.ReadOnly = false;
         }
 
+        private void checkBox1_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox1.BackColor = SystemColors.ControlLight;
+            infoField.ForeColor = Color.Black;
+            infoField.Text = "Все знаки препинания пишутся слева слитно со словом, \nа справа отбиваются пробелом. Тире отбивается пробелами \r\nс двух сторон. Скобки и кавычки пишутся слитно со словами, которые находятся внутри них.\r\n";
+        }
+
+        private void checkBox1_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox1.BackColor = SystemColors.ButtonFace;
+            infoField.ForeColor = Color.Gray;
+            infoField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+
+        private void checkBox2_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox2.BackColor = SystemColors.ControlLight;
+            infoField.ForeColor = Color.Black;
+            infoField.Text = "Исключаются все возможности отображения пробела более\nчем одного.\r\n";
+        }
+
+        private void checkBox2_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox2.BackColor = SystemColors.ButtonFace;
+            infoField.ForeColor = Color.Gray;
+            infoField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+        private void checkBox3_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox3.BackColor = SystemColors.ControlLight;
+            infoField.ForeColor = Color.Black;
+            infoField.Text = "Вместо кавычек «\"» используются кавычки «ёлочки». \nСоздаются они так: «Ёлочки».\r\n";
+        }
+
+        private void checkBox3_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox3.BackColor = SystemColors.ButtonFace;
+            infoField.ForeColor = Color.Gray;
+            infoField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+
+        private void checkBox4_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox4.BackColor = SystemColors.ControlLight;
+            infoField.ForeColor = Color.Black;
+            infoField.Text = "Дефис пробелами не отбивается и всегда пишется слитно с \nчастями слова или цифр, которые он разделяет.\r\n";
+        }
+
+        private void checkBox4_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox4.BackColor = SystemColors.ButtonFace;
+            infoField.ForeColor = Color.Gray;
+            infoField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+
+        private void checkBox5_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox5.BackColor = SystemColors.ControlLight;
+            infoField.ForeColor = Color.Black;
+            infoField.Text = "Кавычки „лапки“: начинают использоваться, когда в одной конструкции находящейся в кавычках, необходимо написать другую конструкцию в кавычках.";
+        }
+
+        private void checkBox5_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox5.BackColor = SystemColors.ButtonFace;
+            infoField.ForeColor = Color.Gray;
+            infoField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }       
+
+        private void checkBox6_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox6.BackColor = SystemColors.ControlLight;
+            infoAddField.ForeColor = Color.Black;
+            infoAddField.Text = "Все буквы заменяются с \"ё\" на \"е\" (Согласно современным \nнормам русского языка, необходимое правило для \r\nпостроения грамотного текста).\r\n\r\n";
+        }
+
+        private void checkBox6_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox6.BackColor = SystemColors.ButtonFace;
+            infoAddField.ForeColor = Color.Gray;
+            infoAddField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+
+        private void checkBox7_MouseEnter(object sender, EventArgs e)
+        {
+            checkBox7.BackColor = SystemColors.ControlLight;
+            infoAddField.ForeColor = Color.Black;
+            infoAddField.Text = "Все нецензурные выражения заменяются символами.\r\n\r\n";
+        }
+
+        private void checkBox7_MouseLeave(object sender, EventArgs e)
+        {
+            checkBox7.BackColor = SystemColors.ButtonFace;
+            infoAddField.ForeColor = Color.Gray;
+            infoAddField.Text = "Здесь будет отображаться подробная информация о правилах.";
+        }
+
+        private void OKbttn_Click(object sender, EventArgs e)
+        {
+            panelAddRls.Visible = false;
+            outputField.Visible = true;
+        }
+        //
+        
+        
+
+        private void TypographerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
         private void inputField_TextChanged(object sender, EventArgs e)
         {
-            outputField.Text = inputField.Text;
+            string str = MainRules.CorrectPunctuationSpaces(inputField.Text);
+            outputField.Text = MyRules.ReplaceE(str);
         }
     }
+
+
 }
